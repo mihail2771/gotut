@@ -3,27 +3,36 @@ package main
 import "fmt"
 
 func main() {
-	var a, b, c int
+	var n int
+	var count int = 0
+	const MAX_COUNT = 3
 
-	fmt.Printf("Введите число 1: ")
-	fmt.Scanln(&a)
-	fmt.Printf("Введите число 2: ")
-	fmt.Scanln(&b)
-	fmt.Printf("Введите число 3: ")
-	fmt.Scanln(&c)
+	for {
+		if count >= MAX_COUNT {
+			fmt.Printf("Истекли попытки ввода")
+			return
+		}
 
-	fmt.Printf("Сумма %d + %d = %d\n", a, b, sum(a, b))
-	fmt.Printf("Среднее (%d + %d + %d) / 3 = %f\n", a, b, c, float32((a+b+c))/3)
-}
+		fmt.Printf("Введите число: ")
+		fmt.Scanln(&n)
+		if n <= 0 {
+			fmt.Println("Число не должно быть отрицательным или нулевым")
+			count++
+			continue
+		} else {
+			break
+		}
 
-func sum(numbers ...int) int {
-	var sum int = 0
-	for _, number := range numbers {
-		sum += number
 	}
-	return sum
+
+	fmt.Printf("Факториал числа %d равен %d\n", n, factorialN(n))
 }
 
-func average3(numbers ...int) float32 {
-	return float32(sum(numbers...)) / (float32(len(numbers)))
+func factorialN(n int) int {
+	sum := 1
+	for i := 1; i <= n; i++ {
+		sum *= i
+	}
+
+	return sum
 }

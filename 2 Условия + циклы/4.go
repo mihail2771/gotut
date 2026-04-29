@@ -3,16 +3,21 @@ package main
 import "fmt"
 
 func main() {
-	var a int
 
-	fmt.Printf("Введите число: ")
-	fmt.Scanln(&a)
+	for i := 0; i <= 100; i++ {
+		if i%3 == 0 && i%5 == 0 {
+			fmt.Println("FizzBuzz")
+			continue
+		}
+		if i%3 == 0 {
+			fmt.Println("Fizz")
+			continue
+		}
+		if i%5 == 0 {
+			fmt.Println("Buzz")
+			continue
+		}
 
-	if a == 0 {
-		fmt.Println("Число равно нулю")
-	} else if a%2 == 0 {
-		fmt.Println("Число является четным")
-	} else {
-		fmt.Println("Число является нечетным")
+		fmt.Println(i)
 	}
 }
